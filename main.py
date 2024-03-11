@@ -79,7 +79,7 @@ def app():
     with st.expander("Hoàn Kiếm frame"):
         # Load the frame image from the local file
         frame_image_content = frame_image()
-        st.image(frame_image_content, caption="Happy Birthday Nov 91-94!")
+        st.image(frame_image_content, caption="Hoan Kiem 3 years of happiness!")
 
     # File uploader for the avatar image
     avatar_expander=st.expander("Ảnh avatar của bạn",expanded=True)
