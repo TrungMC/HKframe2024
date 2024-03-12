@@ -99,8 +99,8 @@ def app():
             merged_image = merge_images(cropped_avatar, frame_image_content)
 
             # Save the merged image to a temporary file
-            temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.png')
-            merged_image.save(temp_file.name)
+            #temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.png')
+            #merged_image.save(temp_file.name)
 
             # Display the merged image
             st.markdown("Phew, xong rồi. Avatar của bạn đây!")
