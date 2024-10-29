@@ -6,8 +6,6 @@ from PIL import Image, PngImagePlugin
 import streamlit as st
 from streamlit_cropper import st_cropper
 import io
-
-
 # Frame: 1958x1958
 # Visible:1500x1500
 # Position:
@@ -51,7 +49,7 @@ def merge_images(avatar_image, frame_image):
 
 
 def frame_image():
-    frame_image_path = os.path.join(os.path.dirname(__file__), "hk3b_frame.png")
+    frame_image_path = os.path.join(os.path.dirname(__file__), "nov2024frame.png")
     frame_image_content = Image.open(frame_image_path)
     return frame_image_content
 
@@ -64,7 +62,7 @@ def download_result(merged_image):
     if st.download_button(
             label="Download Avatar",
             data=img_bytes.getvalue(),
-            file_name="hk3b_avatar_4u.png",
+            file_name="nov9194_avatar_4u.png",
             mime="image/png"
     ):
         # Add a message after the download
@@ -73,13 +71,15 @@ def download_result(merged_image):
 
 
 def app():
-    st.title("HoanKiem 91-94 Avatar Merger-v2024")
+    # st.title("Nov 91-94 Avatar Merger-v2024")
 
-    st.subheader("3 năm dấu xưa!!!")
-    with st.expander("Hoàn Kiếm frame"):
+    st.set_page_config(page_title="Nov 91-94 Frame Merger-one in a year", page_icon=":shark:")
+    st.markdown("<h1 style='color: purple;'>Nov 91-94 Avatar Merger-v2024</h1>", unsafe_allow_html=True)
+    st.subheader("💖💝!!!")
+    with st.expander("Frame gốc by Dung PMU"):
         # Load the frame image from the local file
         frame_image_content = frame_image()
-        st.image(frame_image_content, caption="Hoan Kiem 3 years of happiness!")
+        st.image(frame_image_content, caption="From PMU with love!")
 
     # File uploader for the avatar image
     avatar_expander=st.expander("Ảnh avatar của bạn",expanded=True)
