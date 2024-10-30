@@ -1,6 +1,6 @@
 import tempfile
 import os
-from PIL import Image
+from PIL import Image,ImageOps
 import streamlit as st
 from streamlit_cropper import st_cropper
 import io
@@ -272,6 +272,7 @@ class AvatarMerger:
             try:
                 image = Image.open(avatar_file)
 
+                image = ImageOps.exif_transpose(image)
                 # Create tabs
                 tabs = st.tabs([
                     "✂️ Crop",
