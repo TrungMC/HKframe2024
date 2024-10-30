@@ -146,6 +146,7 @@ class AvatarMerger:
                     - 🎯 Chọn chủ thể trong hình vuông
                     - 🌟 Có thể phải thêm ít không gian xung quanh chủ thể
                     - 🎪 Kết quả sẽ luôn là avatar vuông nhá 
+                    - 🌈 Mà có khi chọn hình quả trám lại hợp hơn ấy chứ
                 """)
             st.markdown('</div>', unsafe_allow_html=True)
 
@@ -156,12 +157,12 @@ class AvatarMerger:
 
         # Calculate center crop coordinates
         left = (width - crop_size) / 2
-        top = (height - crop_size) / 2
+        top = (height - crop_size) / 2*1.1
         right = (width + crop_size) / 2
         bottom = (height + crop_size) / 2
 
         st.markdown("### ✂️ Crop Your Image")
-        st.markdown("Kéo các góc để chọn vùng ảnh. Vùng chọn sẽ luôn là hình vuông để hợp với khung gốc.")
+        st.markdown("Kéo các góc để chọn vùng ảnh. Ấn vào khung đỏ nếu không thấy góc.")
 
         cropped_image = st_cropper(
             image,
