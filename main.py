@@ -232,9 +232,13 @@ class AvatarMerger:
         # Load and store frame image in session state
         if 'frame_image' not in st.session_state:
             st.session_state.frame_image = self.load_frame()
-
+        # Custom CSS for the file uploader
+        st.markdown(
+            """ <style> .stFileUploader label p { color: red; /* Change the color if needed */ } 
+            .stFileUploader section[role="button"]::before { content: "Định dạng jpg,jpeg (giới hạn 200MB) "; color: blue; /* Change the color if needed */ } .stFileUploader small { display: none; /* Hide the original small text */ } .stFileUploader span.st-emotion-cache-9ycgxx.e1b2p2ww12 { display: none; /* Hide the original drag and drop text */ } .stFileUploader div.st-emotion-cache-1fttcpj.e1b2p2ww11::before { content: "Kéo và thả tệp ảnh của bạn vào đây"; color: green; /* Change the color if needed */ } </style> """,
+            unsafe_allow_html=True)
         # File uploader outside expander to track state
-        upload_help = f"Supported formats: {', '.join(SUPPORTED_FORMATS)}"
+        upload_help = f"Định dạng hỗ trợ: {', '.join(SUPPORTED_FORMATS)}"
         avatar_file = st.file_uploader(
             "Chọn ảnh của bạn",
             type=SUPPORTED_FORMATS,
@@ -250,7 +254,7 @@ class AvatarMerger:
             #st.experimental_rerun()
 
         # Input section in expander
-        with st.expander("📤 Upload Your Image", expanded=st.session_state.expander_state):
+        with st.expander("📤 Tải lên avatar của bạn ", expanded=st.session_state.expander_state):
             # Always display frame at the top
             if st.session_state.frame_image:
                 self.display_frame(st.session_state.frame_image)
