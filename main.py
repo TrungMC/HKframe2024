@@ -133,9 +133,9 @@ class AvatarMerger:
         """Display the frame in a consistent location"""
         with st.container():
             st.markdown('<div class="frame-preview">', unsafe_allow_html=True)
-            col1, col2 = st.columns([1, 3])
+            col1, col2 = st.columns([2, 2])
             with col1:
-                st.image(frame_image, caption="Frame Template", use_column_width=True)
+                st.image(frame_image, caption="Khung Avatar tháng 11", use_column_width=True)
             with col2:
                 st.markdown(f"""
                     ### 🎨 Khung gốc by Dung PMU {self.get_random_emoji(CONGRATULATION_EMOJIS)}
