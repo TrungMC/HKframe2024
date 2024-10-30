@@ -296,9 +296,26 @@ class AvatarMerger:
                 with tabs[2]:
                     if st.session_state.merged_image is not None:
                         st.markdown("### 🎉 Avatar của bạn đã sẵn sàng!")
-                        st.info("Nhưng vẫn chờ nút tải ở dưới hiện lên nhá!!!")
+                        # Create a container for the download button/message
+                        download_container = st.empty()
+                        st.info("Nếu chưa ưng quay lại sửa. Còn ưng thì chờ tí nút tải sẽ hiện lên ở đây nhá!!!")
                         st.image(st.session_state.merged_image, use_column_width=True)
-                        self.download_result(st.session_state.merged_image)
+                        # Create download button in the container
+                        with download_container:
+                            img_bytes = io.BytesIO()
+                            st.session_state.merged_image.save(img_bytes, format="PNG", optimize=True)
+
+                            if st.download_button(
+                                    label="⬇️ Tải Avatar của bạn",
+                                    data=img_bytes.getvalue(),
+                                    file_name="custom_avatar.png",
+                                    mime="image/png",
+                                    key="download_button"
+                            ):
+                                st.markdown(
+                                    '<div class="success-message">✅ Đã tải xong. Bạn kiểm tra phần Tải về trên trình duyệt.</div>',
+                                    unsafe_allow_html=True
+                                )
                     else:
                         st.info("Chọn vùng ảnh gốc để ghép vào khung!")
 
